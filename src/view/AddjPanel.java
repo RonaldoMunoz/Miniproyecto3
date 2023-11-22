@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
-public class AddjPanel extends javax.swing.JPanel {
+import controller.Controlador;
+
+public class AddjPanel extends javax.swing.JPanel implements VistaGeneral{
 
     
     /**
@@ -12,12 +14,6 @@ public class AddjPanel extends javax.swing.JPanel {
      */
     public AddjPanel() {
         initComponents();
-        this.prom = new ArrayList <String>();
-        this.nombre =" ";
-        this.cedula =" ";
-        this.ciudad =" ";
-        this.partido =" ";
-        this.inclinacion =" ";
         
 
     }
@@ -63,7 +59,7 @@ public class AddjPanel extends javax.swing.JPanel {
 
 
         ArrayList<String> listaCiudades = new ArrayList<String>();
-        for (C_origen ciudades : C_origen.values() ) {
+        for (model.C_origen ciudades : model.C_origen.values() ) {
             listaCiudades.add(ciudades.displayNameEnum());
             
         }
@@ -88,7 +84,7 @@ public class AddjPanel extends javax.swing.JPanel {
         jLabel4.setText("Ideologia:");
 
         ArrayList<String> listaPartidos = new ArrayList<String>();
-        for (Partido_p partido : Partido_p.values() ) {
+        for (model.Partido_p partido : model.Partido_p.values() ) {
             listaPartidos.add(partido.displayNameEnum());
             
         }
@@ -214,61 +210,56 @@ public class AddjPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jCheckBoxIzquierdaActionPerformed
 
-    private void reiniciarVariables(){
-        jTextfNombre.setText(null);
-        jTextFcedula.setText(null);
-        jTextFpromesas.setText(null);
-        this.prom = new ArrayList <String>();
-        this.nombre =" ";
-        this.cedula =" ";
-        this.ciudad =" ";
-        this.partido =" ";
-        this.inclinacion =" ";
-        jCheckBoxDerecha.setSelected(false);
-        jCheckBoxIzquierda.setSelected(false);
-        
 
-    }
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {
-        // codeOf: Agregar Candidato y excepcion si no llena todos los campos
-        try{
-            for(int i = 0; i < AddjPanel.candidatos.size(); i++){
-                if(AddjPanel.candidatos.get(i).getCedula().equals(jTextFcedula.getText())){
-                throw new FormularioException("La cedula que digitaste ya se ha ingresasdo");
-                
-                }
-                
-            }
-
-        if(jTextfNombre.getText().equals("") == false && jTextFcedula.getText().equals("") == false && (jCheckBoxIzquierda.isSelected()|| jCheckBoxDerecha.isSelected()) && jTextFpromesas.getText().equals("") == false){
-        this.nombre = jTextfNombre.getText();
-        this.cedula = jTextFcedula.getText();
-        this.ciudad = ((String) jComboBoxCity.getSelectedItem()).replace(" ", "_");
-        this.ciudad.replace(" ", "_");
-        this.partido = ((String) jComboBoxPartido.getSelectedItem()).replace(" ", "_");
-        this.ciudad.replace(" ", "_");
-        this.partido.replace(" ", "_");
-        this.prom.add(jTextFpromesas.getText());
-        if(jCheckBoxDerecha.isSelected()){
-            this.inclinacion = "DERECHA";
-        }
-        else if(jCheckBoxIzquierda.isSelected()){
-            this.inclinacion = "IZQUIERDA";
-        }
-        candidatos.add(new Candidato(this.nombre,this.cedula,C_origen.valueOf(this.ciudad.toUpperCase()),Partido_p.valueOf(this.partido.toUpperCase()),this.prom,Inclinacion.valueOf(this.inclinacion),0));
-        reiniciarVariables();
-        }
-        else{
-            throw new FormularioException("¡Debes llenar todos los campos del candidato!");
-        }  }
-        catch(FormularioException ex){
-            JOptionPane.showMessageDialog(jPanel1,ex.getMessage()); 
-        }
         
         
         
     }
+
+        @Override
+    public String getNombre() {
+        
+        return this.jTextfNombre.getText(); 
+    }
+
+    @Override
+    public String getCedula() {
+        
+        return this.jTextFcedula.getText();
+    }
+
+    @Override
+    public String getCiudad() {
+        
+        return (String) this.jComboBoxCity.getSelectedItem();
+    }
+
+    @Override
+    public String getPartido() {
+        return (String) this.jComboBoxPartido.getSelectedItem();
+    }
+
+    @Override
+    public String getPromesas() {
+       return this.jTextFpromesas.getText();
+    }
+
+    @Override
+    public void iniciar(Controlador controller) {
+       
+    }
+    @Override
+    public String getInclinacion(){
+        if(jCheckBoxDerecha.isSelected()){
+        return "Derecha";}
+        else if (jCheckBoxIzquierda.isSelected()){
+            return "Izquierda";
+        }
+        else {return null;}
+    }
+    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -287,8 +278,6 @@ public class AddjPanel extends javax.swing.JPanel {
     private javax.swing.JTextField jTextFcedula;
     private javax.swing.JTextField jTextFpromesas;
     private javax.swing.JTextField jTextfNombre;
-    public ArrayList <String> prom;
-    public String nombre,cedula,partido,ciudad,inclinacion;
-    static ArrayList<Candidato> candidatos = new ArrayList<>();
-    // End of variables declaration//GEN-END:variables
+
+
 }

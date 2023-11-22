@@ -151,7 +151,7 @@ public class UpdatePanel extends javax.swing.JPanel {
     
             
             ArrayList<String> listaCiudades = new ArrayList<String>();
-            for (C_origen ciudades : C_origen.values() ) {
+            for (model.C_origen ciudades : model.C_origen.values() ) {
                 listaCiudades.add(ciudades.displayNameEnum());
                 
             }
@@ -160,7 +160,7 @@ public class UpdatePanel extends javax.swing.JPanel {
             jCBciudad.setMaximumSize(new java.awt.Dimension(72, 22));
     
             ArrayList<String> listaPartidos = new ArrayList<String>();
-            for (Partido_p partido : Partido_p.values() ) {
+            for (model.Partido_p partido : model.Partido_p.values() ) {
                 listaPartidos.add(partido.displayNameEnum());
                 
             }
@@ -305,78 +305,10 @@ public class UpdatePanel extends javax.swing.JPanel {
         );
     }
 
-     public void actualizarCandidato(ArrayList<Candidato> candidatos) {
-
-                        String inclinacion = "";
-                        try{
-                            for(int i = 0; i < AddjPanel.candidatos.size(); i++){
-                                if(AddjPanel.candidatos.get(i).getCedula().equals(jTFcedula.getText())){
-                                throw new FormularioException("La cedula que digitaste ya se ha ingresasdo");
-                                
-                                }
-                                
-                            }
-                        if(jTFname.getText().equals("") == false && jTFcedula.getText().equals("") == false && (jCheckIzquierda.isSelected()|| jCheckDerecha.isSelected()) && jTApromesas.getText().equals("") == false){
-                        
-                        String nombre = jTFname.getText();
-                        String cedula = jTFcedula.getText();
-                        String ciudad = ((String) jCBciudad.getSelectedItem()).replace(" ", "_");
-                        ciudad.replace(" ", "_");
-                        String partido = ((String) jCBpartido.getSelectedItem()).replace(" ", "_");
-                        ciudad.replace(" ", "_");
-                        partido.replace(" ", "_");
-                        ArrayList <String> prom = new ArrayList<>();
-                        prom.add(jTApromesas.getText());
-                        if(jCheckDerecha.isSelected()){
-                            inclinacion = "DERECHA";
-                        }
-                        else if(jCheckIzquierda.isSelected()){
-                            inclinacion = "IZQUIERDA";
-                        }
-                        for (int i = 0; i < candidatos.size(); i++) {
-                        if (candidatos.get(i) != null) {
-                        if (candidatos.get(i).getCedula().equals(jTFUpdate.getText())) {
-                        candidatos.get(i).setNombre(nombre);
-                        candidatos.get(i).setCedula(cedula);
-                        candidatos.get(i).setC_origen(C_origen.valueOf(ciudad.toUpperCase()));
-                        candidatos.get(i).setPartido_politico(Partido_p.valueOf(partido.toUpperCase()));
-                        candidatos.get(i).setInclinacion(Inclinacion.valueOf(inclinacion.toUpperCase(getLocale())));
-                        candidatos.get(i).setPromesas(prom);
-                        
-                }
-            } }
-        } 
-                        else{
-                            throw new FormularioException("¡Debes llenar todos los campos del candidato!");
-                        }  }
-                        catch(FormularioException ex){
-                            JOptionPane.showMessageDialog(jPNewDatos,ex.getMessage()); 
-                        }
-
-
-    }
+    
 
         private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {                                              
-                String buscar = jTFUpdate.getText();
-                boolean find = false;
-                for (int i = 0; i < AddjPanel.candidatos.size(); i++) {
-                        if (AddjPanel.candidatos.get(i) != null) {
-                                if (AddjPanel.candidatos.get(i).getCedula().equals(buscar)) {
-                                        find = true;
-                                        JOptionPane.showMessageDialog(jPanelBuscar,
-                                                        AddjPanel.candidatos.get(i).listarDatos(),
-                                                        "Candidato Encontrado", JOptionPane.INFORMATION_MESSAGE);
-                                                        jPNewDatos.setVisible(true);
-                                        
-                                }
-                        }
-                }
-                if (!find) {
-                        JOptionPane.showMessageDialog(jPanelBuscar, "El usuario No se encontro");
-                }
         }                                           
-
-                                      
     
         private void jCheckDerechaActionPerformed(java.awt.event.ActionEvent evt) {                                              
             if(jCheckDerecha.isSelected() && jCheckIzquierda.isSelected()){
@@ -391,14 +323,13 @@ public class UpdatePanel extends javax.swing.JPanel {
         }                                              
     
         private void jButtonAddUpdateActionPerformed(java.awt.event.ActionEvent evt) {      
-            actualizarCandidato(AddjPanel.candidatos);
-            reiniciarVariables();
-            jPNewDatos.setVisible(true);
+
             
 
 
         }
-        private void reiniciarVariables(){
+
+        public void reiniciarVariables(){
             jTFname.setText(null);
             jTFcedula.setText(null);
             jTApromesas.setText(null);

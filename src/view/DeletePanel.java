@@ -1,5 +1,7 @@
 package view;
 
+import java.awt.event.ActionEvent;
+
 import javax.swing.JOptionPane;
 
 /**
@@ -43,12 +45,6 @@ public class DeletePanel extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Digite la cedula del candidato:");
 
-        jTextFDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFDeleteActionPerformed(evt);
-            }
-        });
-
         jButtonDelete.setBackground(new java.awt.Color(204, 204, 204));
         jButtonDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("borrar.png"))); // NOI18N
         jButtonDelete.setText("Eliminar");
@@ -60,7 +56,7 @@ public class DeletePanel extends javax.swing.JPanel {
         });
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource(
-                "2560x1600-Fondo-de-pantalla-HD-Full-HD-papel-tapiz-de-color-solido-papel-tapiz-de-color-solido.jpg"))); // NOI18N
+                "src//view//imageSources//2560x1600-Fondo-de-pantalla-HD-Full-HD-papel-tapiz-de-color-solido-papel-tapiz-de-color-solido.jpg"))); // NOI18N
         jLabel3.setMaximumSize(new java.awt.Dimension(210, 337));
         jLabel3.setMinimumSize(new java.awt.Dimension(210, 337));
         jLabel3.setPreferredSize(new java.awt.Dimension(210, 337));
@@ -98,27 +94,8 @@ public class DeletePanel extends javax.swing.JPanel {
                         .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFDeleteActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jTextFDeleteActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_jTextFDeleteActionPerformed
-
-    private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButtonDeleteActionPerformed
-        String buscar = jTextFDelete.getText();
-        boolean find = false;
-        for (int i = 0; i < AddjPanel.candidatos.size(); i++) {
-            if (AddjPanel.candidatos.get(i) != null) {
-                if (AddjPanel.candidatos.get(i).getCedula().equals(buscar)) {
-                    find = true;
-                    JOptionPane.showMessageDialog(jPanel1, AddjPanel.candidatos.get(i).listarDatos(),
-                            "Candidato eliminado", JOptionPane.INFORMATION_MESSAGE);
-                    AddjPanel.candidatos.remove(i);
-                }
-            }
-        }
-        if (!find) {
-            JOptionPane.showMessageDialog(jPanel1, "El usuario no se encontro");
-        }
-    }// GEN-LAST:event_jButtonDeleteActionPerformed
+    private void jButtonDeleteActionPerformed(ActionEvent evt) {
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;

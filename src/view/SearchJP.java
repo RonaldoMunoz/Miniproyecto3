@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+package view;
 
 import javax.swing.JOptionPane;
 
@@ -95,21 +92,7 @@ public class SearchJP extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextFBuscarActionPerformed
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
-    String buscar = jTextFBuscar.getText();
-    boolean find = false;
-    for (int i = 0; i < AddjPanel.candidatos.size(); i++) {
-        if (AddjPanel.candidatos.get(i) != null) {
-            if (AddjPanel.candidatos.get(i).getCedula().equals(buscar)) {
-                find = true;
-               JOptionPane.showMessageDialog(jPanel1,AddjPanel.candidatos.get(i).listarDatos(),"Candidato Encontrado",JOptionPane.INFORMATION_MESSAGE);
-            }
-        }
-    }
-    if (!find) {
-        JOptionPane.showMessageDialog(jPanel1,"El usuario No se encontro");
-    }
 
-    
     }
 
 
