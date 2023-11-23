@@ -36,7 +36,7 @@ public class Resultados extends javax.swing.JFrame {
         jPanel3.setMinimumSize(new java.awt.Dimension(640, 370));
         jPanel3.setPreferredSize(new java.awt.Dimension(640, 370));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("imageSources//2560x1600-Fondo-de-pantalla-HD-Full-HD-papel-tapiz-de-color-solido-papel-tapiz-de-color-solido.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("imageSources/2560x1600-Fondo-de-pantalla-HD-Full-HD-papel-tapiz-de-color-solido-papel-tapiz-de-color-solido.jpg"))); // NOI18N
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);

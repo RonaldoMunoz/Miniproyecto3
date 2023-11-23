@@ -1,7 +1,7 @@
 package view;
 
 import java.util.ArrayList;
-
+import model.Modelo;
 /**
  *
  * @author usuario
@@ -28,17 +28,16 @@ public class ShowCandidatos extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(643, 377));
         setPreferredSize(new java.awt.Dimension(643, 377));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("imageSources//2560x1600-Fondo-de-pantalla-HD-Full-HD-papel-tapiz-de-color-solido-papel-tapiz-de-color-solido.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("imageSources/2560x1600-Fondo-de-pantalla-HD-Full-HD-papel-tapiz-de-color-solido-papel-tapiz-de-color-solido.jpg"))); // NOI18N
         jLabel1.setMaximumSize(new java.awt.Dimension(210, 377));
         jLabel1.setMinimumSize(new java.awt.Dimension(210, 377));
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
 
-        candidatosShow(null);
+        StringBuilder datos = candidatosShow(Modelo.candidatos);
 
         jTextArea1.setText(datos.toString());
-        
         jShowCandidatos.setViewportView(jTextArea1);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -76,7 +75,7 @@ public class ShowCandidatos extends javax.swing.JPanel {
 
     }// </editor-fold>//GEN-END:initComponents
 
-    public StringBuilder candidatosShow(ArrayList <model.Candidato> candidatos){
+    private StringBuilder candidatosShow(ArrayList <model.Candidato> candidatos){
         for(int i = 0; i<candidatos.size();i++){
             String text = candidatos.get(i).listarDatos();
             datos.append(text+"\n");

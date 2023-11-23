@@ -1,4 +1,6 @@
 package view;
+import java.util.ArrayList;
+
 import controller.Controlador;
 
 public interface VistaGeneral {
@@ -6,8 +8,8 @@ public interface VistaGeneral {
     public String getCedula();
     public String getCiudad();
     public String getPartido();
-    public String getPromesas();
+    public ArrayList <String> getPromesas();
     public String getInclinacion();
-    public void iniciar(Controlador controller);
+    
 
 }
