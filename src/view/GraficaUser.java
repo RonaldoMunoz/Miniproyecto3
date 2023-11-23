@@ -61,10 +61,10 @@ public class GraficaUser extends javax.swing.JFrame {
 
         jMenuBar2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jMenuAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("candidato.png"))); // NOI18N
+        jMenuAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("imageSources/candidato.png"))); // NOI18N
         jMenuAdd.setText("Candidatos");
 
-        jMenuItemAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("agregar.png"))); // NOI18N
+        jMenuItemAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("imageSources/agregar.png"))); // NOI18N
         jMenuItemAdd.setText("Agregar candidato");
         jMenuItemAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,7 +73,7 @@ public class GraficaUser extends javax.swing.JFrame {
         });
         jMenuAdd.add(jMenuItemAdd);
 
-        jMenuItemBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("buscar.png"))); // NOI18N
+        jMenuItemBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("imageSources/buscar.png"))); // NOI18N
         jMenuItemBuscar.setText("Buscar candidato");
         jMenuItemBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,7 +82,7 @@ public class GraficaUser extends javax.swing.JFrame {
         });
         jMenuAdd.add(jMenuItemBuscar);
         
-        jMenuItemDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("borrar.png"))); // NOI18N
+        jMenuItemDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("imageSources/borrar.png"))); // NOI18N
         jMenuItemDelete.setText("Eliminar candidato");
         jMenuItemDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,7 +91,7 @@ public class GraficaUser extends javax.swing.JFrame {
         });
         jMenuAdd.add(jMenuItemDelete);
 
-        jMitemBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("actualizado.png"))); // NOI18N
+        jMitemBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("imageSources/actualizado.png"))); // NOI18N
         jMitemBuscar.setText("Actualizar candidato");
         jMitemBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,7 +102,7 @@ public class GraficaUser extends javax.swing.JFrame {
 
         jMenuBar2.add(jMenuAdd);
 
-        jMenuShow.setIcon(new javax.swing.ImageIcon(getClass().getResource("ver.png"))); // NOI18N
+        jMenuShow.setIcon(new javax.swing.ImageIcon(getClass().getResource("imageSources/ver.png"))); // NOI18N
         jMenuShow.setText("Ver");
         jMenuShow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,7 +110,7 @@ public class GraficaUser extends javax.swing.JFrame {
             }
         });
 
-        jMitemShow.setIcon(new javax.swing.ImageIcon(getClass().getResource("ver.png"))); // NOI18N
+        jMitemShow.setIcon(new javax.swing.ImageIcon(getClass().getResource("imageSources/ver.png"))); // NOI18N
         jMitemShow.setText("Mostrar candidatos");
         jMitemShow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,7 +121,7 @@ public class GraficaUser extends javax.swing.JFrame {
 
         jMenuBar2.add(jMenuShow);
 
-        jMenuContinuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("garrapata.png"))); // NOI18N
+        jMenuContinuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("imageSources/garrapata.png"))); // NOI18N
         jMenuContinuar.setText("Continuar");
         jMenuContinuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,7 +129,7 @@ public class GraficaUser extends javax.swing.JFrame {
             }
         });
 
-        jMitemContinuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("resultado.png"))); // NOI18N
+        jMitemContinuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("imageSources/resultado.png"))); // NOI18N
         jMitemContinuar.setText("Realizar Votacion");
         jMitemContinuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

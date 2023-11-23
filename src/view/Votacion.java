@@ -32,7 +32,7 @@ public class Votacion extends javax.swing.JPanel {
         jLabel2.setText("Ingrese los votos para el candidato:");
 
         jButtonVotar.setBackground(new java.awt.Color(211, 196, 245));
-        jButtonVotar.setIcon(new javax.swing.ImageIcon(getClass().getResource("garrapata.png"))); // NOI18N
+        jButtonVotar.setIcon(new javax.swing.ImageIcon(getClass().getResource("imageSources/garrapata.png"))); // NOI18N
         jButtonVotar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonVotarActionPerformed(evt);

@@ -46,7 +46,7 @@ public class JpaneVotacion extends javax.swing.JPanel {
         });
 
         jButtonVotosAdd.setBackground(java.awt.Color.lightGray);
-        jButtonVotosAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("garrapata.png"))); // NOI18N
+        jButtonVotosAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("imageSources/garrapata.png"))); // NOI18N
         jButtonVotosAdd.setText("Listo");
         jButtonVotosAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,7 +55,7 @@ public class JpaneVotacion extends javax.swing.JPanel {
         });
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource(
-                "2560x1600-Fondo-de-pantalla-HD-Full-HD-papel-tapiz-de-color-solido-papel-tapiz-de-color-solido.jpg"))); // NOI18N
+                "imageSources/2560x1600-Fondo-de-pantalla-HD-Full-HD-papel-tapiz-de-color-solido-papel-tapiz-de-color-solido.jpg"))); // NOI18N
         jLabel3.setMaximumSize(new java.awt.Dimension(210, 337));
         jLabel3.setMinimumSize(new java.awt.Dimension(210, 337));
         jLabel3.setPreferredSize(new java.awt.Dimension(210, 337));
