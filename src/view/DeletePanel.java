@@ -4,15 +4,20 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.JOptionPane;
 
+import controller.Controlador;
+import model.Modelo;
+
+
+
 /**
  *
  * @author Ronaldou
  */
 public class DeletePanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form DeletePanel
-     */
+
+    Controlador controlador = new Controlador();
+
     public DeletePanel() {
         initComponents();
     }
@@ -46,7 +51,7 @@ public class DeletePanel extends javax.swing.JPanel {
         jLabel2.setText("Digite la cedula del candidato:");
 
         jButtonDelete.setBackground(new java.awt.Color(204, 204, 204));
-        jButtonDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("borrar.png"))); // NOI18N
+        jButtonDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("imageSources/borrar.png"))); // NOI18N
         jButtonDelete.setText("Eliminar");
         jButtonDelete.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -56,7 +61,7 @@ public class DeletePanel extends javax.swing.JPanel {
         });
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource(
-                "src//view//imageSources//2560x1600-Fondo-de-pantalla-HD-Full-HD-papel-tapiz-de-color-solido-papel-tapiz-de-color-solido.jpg"))); // NOI18N
+                "imageSources/2560x1600-Fondo-de-pantalla-HD-Full-HD-papel-tapiz-de-color-solido-papel-tapiz-de-color-solido.jpg"))); // NOI18N
         jLabel3.setMaximumSize(new java.awt.Dimension(210, 337));
         jLabel3.setMinimumSize(new java.awt.Dimension(210, 337));
         jLabel3.setPreferredSize(new java.awt.Dimension(210, 337));
@@ -92,9 +97,12 @@ public class DeletePanel extends javax.swing.JPanel {
                                         javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE));
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
     private void jButtonDeleteActionPerformed(ActionEvent evt) {
+        controlador.deleteCandidato(jTextFDelete.getText());
+        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

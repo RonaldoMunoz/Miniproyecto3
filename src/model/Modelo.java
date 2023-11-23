@@ -6,26 +6,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.swing.DefaultListModel;
-import javax.swing.JOptionPane;
-
-import view.AddjPanel;
 
 public class Modelo {
     public static ArrayList<Candidato> candidatos = new ArrayList<>();
     private ArrayList<String> prom;
-    private String nombre, cedula, partido, ciudad, inclinacion, target;
+    private String nombre, cedula, partido, ciudad, inclinacion;
     private int votos;
+    private String target;
 
-    public Modelo(ArrayList<String> prom, String nombre, String cedula, String partido, String ciudad,
-            String inclinacion, String target, int votos) {
-        this.prom = prom;
-        this.nombre = nombre;
-        this.cedula = cedula;
-        this.partido = partido;
-        this.ciudad = ciudad;
-        this.inclinacion = inclinacion;
-        this.target = target;
-        this.votos = votos;
+    public Modelo() {
     }
 
     public String getTarget() {
@@ -35,15 +24,6 @@ public class Modelo {
     public void setTarget(String target) {
         this.target = target;
     }
-
-    public static ArrayList<Candidato> getCandidatos() {
-        return candidatos;
-    }
-
-    public static void setCandidatos(ArrayList<Candidato> candidatos) {
-        Modelo.candidatos = candidatos;
-    }
-
     public ArrayList<String> getProm() {
         return prom;
     }
@@ -93,18 +73,16 @@ public class Modelo {
     }
 
     public void addCandidato(ArrayList<Candidato> candidatos) {
-        this.partido.replace(" ", "_");
-        this.ciudad.replace(" ", "_");
         candidatos.add(new Candidato(this.nombre, this.cedula, C_origen.valueOf(this.ciudad.toUpperCase()),
                 Partido_p.valueOf(this.partido.toUpperCase()), this.prom, Inclinacion.valueOf(this.inclinacion), 0));
     }
 
     public Candidato buscar(ArrayList<Candidato> candidatos) {
         String buscar = this.target;
-        for (int i = 0; i < candidatos.size(); i++) {
-            if (candidatos.get(i) != null) {
-                if (candidatos.get(i).getCedula().equals(buscar)) {
-                    return candidatos.get(i);
+        for (int i = 0; i < Modelo.candidatos.size(); i++) {
+            if (Modelo.candidatos.get(i) != null) {
+                if (Modelo.candidatos.get(i).getCedula().equals(buscar)) {
+                    return Modelo.candidatos.get(i);
                 }
             }
         }
@@ -113,10 +91,10 @@ public class Modelo {
 
     public void delete(ArrayList<Candidato> candidatos) {
         String buscar = this.target;
-        for (int i = 0; i < candidatos.size(); i++) {
-            if (candidatos.get(i) != null) {
-                if (candidatos.get(i).getCedula().equals(buscar)) {
-                    candidatos.remove(i);
+        for (int i = 0; i < Modelo.candidatos.size(); i++) {
+            if (Modelo.candidatos.get(i) != null) {
+                if (Modelo.candidatos.get(i).getCedula().equals(buscar)) {
+                    Modelo.candidatos.remove(i);
                 }
             }
         }
@@ -208,6 +186,8 @@ public class Modelo {
         }
         return ciudadesListModel;
     }
+
+    
     
     public void reiniciarVariables(){
         this.prom = new ArrayList <String>();
