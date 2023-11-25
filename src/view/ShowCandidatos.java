@@ -34,10 +34,12 @@ public class ShowCandidatos extends javax.swing.JPanel {
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-
+    
         StringBuilder datos = candidatosShow(Modelo.candidatos);
-
+    
         jTextArea1.setText(datos.toString());
+        jTextArea1.setEditable(false); // Hacer que el TextArea sea o no editable
+    
         jShowCandidatos.setViewportView(jTextArea1);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
