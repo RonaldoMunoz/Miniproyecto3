@@ -61,7 +61,7 @@ public class UpdatePanel extends javax.swing.JPanel {
             jPanelUpdate.setMinimumSize(new java.awt.Dimension(643, 377));
             jPanelUpdate.setPreferredSize(new java.awt.Dimension(643, 377));
     
-            jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("2560x1600-Fondo-de-pantalla-HD-Full-HD-papel-tapiz-de-color-solido-papel-tapiz-de-color-solido.jpg"))); // NOI18N
+            jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("imageSources/2560x1600-Fondo-de-pantalla-HD-Full-HD-papel-tapiz-de-color-solido-papel-tapiz-de-color-solido.jpg"))); // NOI18N
             jLabel3.setMaximumSize(new java.awt.Dimension(210, 337));
             jLabel3.setMinimumSize(new java.awt.Dimension(210, 337));
             jLabel3.setPreferredSize(new java.awt.Dimension(210, 337));
@@ -74,7 +74,7 @@ public class UpdatePanel extends javax.swing.JPanel {
             jTFUpdate.setMaximumSize(new java.awt.Dimension(5, 20));
     
             jButtonUpdate.setBackground(java.awt.Color.lightGray);
-            jButtonUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("actualizado.png"))); // NOI18N
+            jButtonUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("imageSources/actualizado.png"))); // NOI18N
             jButtonUpdate.setText("Actualizar");
             jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,7 +176,7 @@ public class UpdatePanel extends javax.swing.JPanel {
             jScrollPane1.setViewportView(jTApromesas);
 
         jButtonAddUpdate.setBackground(new java.awt.Color(242, 242, 242));
-        jButtonAddUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("actualizado.png"))); // NOI18N
+        jButtonAddUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("imageSources/actualizado.png"))); // NOI18N
         jButtonAddUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAddUpdateActionPerformed(evt);
@@ -324,7 +324,7 @@ public class UpdatePanel extends javax.swing.JPanel {
     
         private void jButtonAddUpdateActionPerformed(java.awt.event.ActionEvent evt) {      
 
-            
+        
 
 
         }

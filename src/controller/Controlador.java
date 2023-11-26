@@ -2,13 +2,19 @@ package controller;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 import model.Candidato;
+import model.FormularioException;
 import model.Modelo;
 
+;
 
 public class Controlador  {
 
-    private Modelo modelo = new Modelo();
+   
+    
     
     public Controlador(){
 
@@ -16,27 +22,45 @@ public class Controlador  {
 
     public void addCandidato(String name, String cedula, String partido, String ciudad, ArrayList <String> propuestas,String inclinacion){
         
-        modelo.setNombre(name);
-        modelo.setCedula(cedula);
-        modelo.setPartido(partido);
-        modelo.setCiudad(ciudad);        
-        modelo.setProm(propuestas);
-        modelo.setInclinacion(inclinacion);
-        modelo.addCandidato(Modelo.candidatos);
+        Modelo.modelo.setNombre(name);
+        Modelo.modelo.setCedula(cedula);
+        Modelo.modelo.setPartido(partido);
+        Modelo.modelo.setCiudad(ciudad);        
+        Modelo.modelo.setProm(propuestas);
+        Modelo.modelo.setInclinacion(inclinacion);
+        Modelo.modelo.addCandidato(Modelo.candidatos);
         
     }
 
     public Candidato buscarCandidato(String target){
         
-        modelo.setTarget(target);
-        return modelo.buscar(Modelo.candidatos);
+        Modelo.modelo.setTarget(target);
+        return Modelo.modelo.buscar();
 
     }
 
+    public void updateCandidato(String target, JPanel panel){
+        try{
+        Modelo.modelo.setTarget(target);
+        if(Modelo.modelo.checkCandidato()){
+            
+            Modelo.modelo.update();
+        } 
+        else{
+            throw new FormularioException("El candidato no se encontro en la base de datos!");
+        }
+
+    }
+        catch(FormularioException e) {
+            JOptionPane.showMessageDialog(panel, e.getMessage());
+            }    
+        }
+    
     public void deleteCandidato(String id){
-        modelo.setTarget(id);
-        modelo.delete(Modelo.candidatos);
+        Modelo.modelo.setTarget(id);
+        Modelo.modelo.delete(Modelo.candidatos);
     }
+
 
 
 }

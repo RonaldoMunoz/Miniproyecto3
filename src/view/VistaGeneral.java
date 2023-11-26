@@ -1,7 +1,6 @@
 package view;
 import java.util.ArrayList;
 
-import controller.Controlador;
 
 public interface VistaGeneral {
     public String getNombre();

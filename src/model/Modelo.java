@@ -8,14 +8,20 @@ import java.util.Map;
 import javax.swing.DefaultListModel;
 
 public class Modelo {
+
+    public static Modelo modelo = new Modelo();
+
+
+
+    private Modelo() {
+    }
+
     public static ArrayList<Candidato> candidatos = new ArrayList<>();
     private ArrayList<String> prom;
     private String nombre, cedula, partido, ciudad, inclinacion;
     private int votos;
     private String target;
 
-    public Modelo() {
-    }
 
     public String getTarget() {
         return target;
@@ -77,12 +83,12 @@ public class Modelo {
                 Partido_p.valueOf(this.partido.toUpperCase()), this.prom, Inclinacion.valueOf(this.inclinacion), 0));
     }
 
-    public Candidato buscar(ArrayList<Candidato> candidatos) {
+    public Candidato buscar() {
         String buscar = this.target;
         for (int i = 0; i < Modelo.candidatos.size(); i++) {
             if (Modelo.candidatos.get(i) != null) {
                 if (Modelo.candidatos.get(i).getCedula().equals(buscar)) {
-                    return Modelo.candidatos.get(i);
+                    return candidatos.get(i);
                 }
             }
         }
@@ -100,16 +106,29 @@ public class Modelo {
         }
     }
 
-    public void update(ArrayList<Candidato> candidatos) {
+    public boolean checkCandidato(){
         String buscar = this.target;
-        for (int i = 0; i < candidatos.size(); i++) {
-            if (candidatos.get(i) != null) {
-                if (candidatos.get(i).getCedula().equals(buscar)) {
-                    candidatos.get(i).setNombre(this.nombre);
-                    candidatos.get(i).setCedula(this.cedula);
-                    candidatos.get(i).setPartido_politico(Partido_p.valueOf(this.ciudad.toUpperCase()));
-                    candidatos.get(i).setC_origen(C_origen.valueOf(this.ciudad.toUpperCase()));
-                    candidatos.get(i).setPromesas(this.prom);
+        for (int i = 0; i < Modelo.candidatos.size(); i++) {
+            if (Modelo.candidatos.get(i) != null) {
+                if (Modelo.candidatos.get(i).getCedula().equals(buscar)) {
+                    return true;
+
+                }
+            }
+        }
+        return false;
+    }
+
+    public void update() {
+        String buscar = this.target;
+        for (int i = 0; i < Modelo.candidatos.size(); i++) {
+            if (Modelo.candidatos.get(i) != null) {
+                if (Modelo.candidatos.get(i).getCedula().equals(buscar)) {
+                    Modelo.candidatos.get(i).setNombre(this.nombre);
+                    Modelo.candidatos.get(i).setCedula(this.cedula);
+                    Modelo.candidatos.get(i).setPartido_politico(Partido_p.valueOf(this.ciudad.toUpperCase()));
+                    Modelo.candidatos.get(i).setC_origen(C_origen.valueOf(this.ciudad.toUpperCase()));
+                    Modelo.candidatos.get(i).setPromesas(this.prom);
                     return;
                 }
             }
