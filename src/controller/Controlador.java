@@ -20,8 +20,12 @@ public class Controlador  {
 
     }
 
-    public void addCandidato(String name, String cedula, String partido, String ciudad, ArrayList <String> propuestas,String inclinacion){
-        
+    public void addCandidato(String name, String cedula, String partido, String ciudad, ArrayList <String> propuestas,String inclinacion, JPanel panel){
+        try{
+        if(name.equals("") || cedula.equals("") || propuestas == null || inclinacion == null ){
+            throw new FormularioException("Debes llenar todos los datos del candidato");
+            
+        }
         Modelo.modelo.setNombre(name);
         Modelo.modelo.setCedula(cedula);
         Modelo.modelo.setPartido(partido);
@@ -29,7 +33,10 @@ public class Controlador  {
         Modelo.modelo.setProm(propuestas);
         Modelo.modelo.setInclinacion(inclinacion);
         Modelo.modelo.addCandidato(Modelo.candidatos);
-        
+    }
+    catch(FormularioException e){
+        JOptionPane.showMessageDialog(panel, e, "Error al ingresar los datos", 0);
+    }
     }
 
     public Candidato buscarCandidato(String target){

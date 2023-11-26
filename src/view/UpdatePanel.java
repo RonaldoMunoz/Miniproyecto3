@@ -307,7 +307,8 @@ public class UpdatePanel extends javax.swing.JPanel {
 
     
 
-        private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {       
+            JOptionPane.showMessageDialog(jButtonAddUpdate, evt);                                       
         }                                           
     
         private void jCheckDerechaActionPerformed(java.awt.event.ActionEvent evt) {                                              

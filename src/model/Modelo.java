@@ -79,8 +79,12 @@ public class Modelo {
     }
 
     public void addCandidato(ArrayList<Candidato> candidatos) {
+        try{
         candidatos.add(new Candidato(this.nombre, this.cedula, C_origen.valueOf(this.ciudad.toUpperCase()),
-                Partido_p.valueOf(this.partido.toUpperCase()), this.prom, Inclinacion.valueOf(this.inclinacion), 0));
+                Partido_p.valueOf(this.partido.toUpperCase()), this.prom, Inclinacion.valueOf(this.inclinacion), 0));}
+        catch(NullPointerException e){
+            return;
+        }
     }
 
     public Candidato buscar() {
