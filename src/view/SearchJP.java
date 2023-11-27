@@ -1,10 +1,9 @@
 package view;
 
-import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
+
 
 import controller.Controlador;
-import model.Candidato;
+
 
 public class SearchJP extends javax.swing.JPanel {
 
@@ -88,26 +87,8 @@ public class SearchJP extends javax.swing.JPanel {
     }// GEN-LAST:event_jTextFBuscarActionPerformed
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {
-        // Obtener el texto ingresado en el campo de búsqueda
-        String cedulaABuscar = jTextFBuscar.getText();
+        controlador.buscarCandidato(jTextFBuscar.getText(),this);
 
-        // Llamar al controlador para buscar el candidato
-        Candidato candidatoEncontrado = controlador.buscarCandidato(cedulaABuscar);
-
-        if (candidatoEncontrado != null) {
-            // Si se encuentra el candidato, actualizar la interfaz con sus datos
-            JTextArea showInfoCandidato = new JTextArea();
-            showInfoCandidato.setEditable(false);
-            showInfoCandidato.append("Candidato encontrado:\n");
-            showInfoCandidato.append(candidatoEncontrado.listarDatos()); // Mostrar los datos del candidato
-
-            // Mostrar los datos del candidato en una ventana emergente (JOptionPane)
-            JOptionPane.showMessageDialog(this, showInfoCandidato, "Información del Candidato",
-                    JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            // Si no se encuentra el candidato, mostrar un mensaje indicando que no se encontró
-            JOptionPane.showMessageDialog(this, "Candidato no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
-        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

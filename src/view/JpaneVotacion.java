@@ -1,8 +1,6 @@
 package view;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+
 
 
 public class JpaneVotacion extends javax.swing.JPanel {

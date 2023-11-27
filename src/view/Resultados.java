@@ -1,10 +1,5 @@
 package view;
-import java.util.ArrayList;
 
-/**
- *
- * @author usuario
- */
 public class Resultados extends javax.swing.JFrame {
 
     /**

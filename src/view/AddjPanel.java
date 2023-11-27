@@ -205,7 +205,7 @@ public class AddjPanel extends javax.swing.JPanel implements VistaGeneral{
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {
         
-        controlador.addCandidato(getNombre(),getCedula(),getPartido(),getCiudad(),getPromesas(),getInclinacion());
+        controlador.addCandidato(getNombre(),getCedula(),getPartido(),getCiudad(),getPromesas(),getInclinacion(),jPanel1);
         reiniciarVariables();
     }
 

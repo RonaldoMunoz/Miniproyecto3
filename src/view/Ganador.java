@@ -1,8 +1,6 @@
 package view;
 import javax.swing.*;
-import java.awt.*;
-import java.util.*;
-import java.util.List;
+
 
 public class Ganador extends JPanel {
 

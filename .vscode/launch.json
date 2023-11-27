@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "GraficaUser",
+            "request": "launch",
+            "mainClass": "view.GraficaUser",
+            "projectName": "MiniProyecto3_1b82e01b"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
