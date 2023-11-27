@@ -134,5 +134,13 @@ public class Controlador implements ControladorGeneral {
     }
 
 
+    @Override
+    public Candidato getCandidato(int index) {
+        try{
+        return Modelo.candidatos.get(index);
+        }catch(IndexOutOfBoundsException e){
+            return null;
+        }
+    }
 
 }
