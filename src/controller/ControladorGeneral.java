@@ -2,7 +2,6 @@ package controller;
 
 import java.util.ArrayList;
 
-import javax.swing.JPanel;
 
 import model.Candidato;
 
@@ -13,5 +12,6 @@ public interface ControladorGeneral {
     public void updateCandidato(Candidato candidato, String nombre, String cedula, String ciudad,
             String partido, String inclinacion, ArrayList<String> propuestas);
     public  void deleteCandidato(String id);
+    public Candidato getCandidato(int index);
 
 }

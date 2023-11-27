@@ -1,7 +1,6 @@
 package view;
 
-
-
+import controller.Controlador;
 
 public class JpaneVotacion extends javax.swing.JPanel {
 
@@ -34,7 +33,7 @@ public class JpaneVotacion extends javax.swing.JPanel {
         jLabel2.setText("Votacion");
 
 
-        jLabelVotosName.setText("Digite la cantidad de votos de: ");
+        jLabelVotosName.setText("Digite la cantidad de votos de: " + controlador.getCandidato(index).getNombre() );
 
 
         jTextFVotos.addActionListener(new java.awt.event.ActionListener() {
@@ -123,16 +122,31 @@ public class JpaneVotacion extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFVotosActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jTextFVotosActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_jTextFVotosActionPerformed
+       
+    }
+
+    private int getVotos(){
+        return Integer.parseInt(jTextFVotos.getText());
+    }
+
+    
 
     private void jButtonVotosAddActionPerformed(java.awt.event.ActionEvent evt) {
+        controlador.getCandidato(index).setN_votos(getVotos());
+        if(controlador.getCandidato(index + 1 ) != null){
+        index += 1;
+        jTextFVotos.setText(null);
+        jLabelVotosName.setText("Digite la cantidad de votos de: " + controlador.getCandidato(index).getNombre() );
+        }
+        else{
+                
+        }
+        
 
-    }
 
-    public void addNameLabel(String name){
-        this.jLabelVotosName.setText("Digite la cantidad de votos de: " + name);
-    }
+}
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonVotosAdd;
@@ -142,6 +156,7 @@ public class JpaneVotacion extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextFVotos;
     static int index = 0;
-    
+    public Controlador controlador = new Controlador();
     // End of variables declaration//GEN-END:variables
 }
+
