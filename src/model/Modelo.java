@@ -123,21 +123,16 @@ public class Modelo {
         return false;
     }
 
-    public void update() {
-        String buscar = this.target;
-        for (int i = 0; i < Modelo.candidatos.size(); i++) {
-            if (Modelo.candidatos.get(i) != null) {
-                if (Modelo.candidatos.get(i).getCedula().equals(buscar)) {
-                    Modelo.candidatos.get(i).setNombre(this.nombre);
-                    Modelo.candidatos.get(i).setCedula(this.cedula);
-                    Modelo.candidatos.get(i).setPartido_politico(Partido_p.valueOf(this.ciudad.toUpperCase()));
-                    Modelo.candidatos.get(i).setC_origen(C_origen.valueOf(this.ciudad.toUpperCase()));
-                    Modelo.candidatos.get(i).setPromesas(this.prom);
-                    return;
-                }
-            }
-        }
+    public void update(Candidato candidato) {
+
+        candidato.setNombre(this.nombre);
+        candidato.setCedula(this.cedula);
+        candidato.setPartido_politico(Partido_p.valueOf(this.partido.toUpperCase()));
+        candidato.setC_origen(C_origen.valueOf(this.ciudad.toUpperCase()));
+        candidato.setPromesas(this.prom);
+        
     }
+
 
     public StringBuilder mostrarCandidatos(ArrayList<Candidato> candidatos) {
         StringBuilder datos = new StringBuilder();
