@@ -10,7 +10,7 @@ import model.Modelo;
 
 
 public class Controlador implements ControladorGeneral {
-    
+    public static boolean flag = false;
     public Controlador(){
 
     }
@@ -33,8 +33,12 @@ public class Controlador implements ControladorGeneral {
         Modelo.modelo.addCandidato(Modelo.candidatos);
     }
     catch(FormularioException e){
-        System.out.println(e.getMessage());
-        JOptionPane.showMessageDialog(null, e, "Error al ingresar los datos", JOptionPane.ERROR_MESSAGE);
+        
+        if(Controlador.flag){
+        JOptionPane.showMessageDialog(null, e, "Error al ingresar los datos", JOptionPane.ERROR_MESSAGE);}
+        else{
+            System.out.println(e.getMessage());
+        }
     }
     }
     @Override
@@ -54,8 +58,9 @@ public class Controlador implements ControladorGeneral {
             showInfoCandidato.append(candidatoEncontrado.listarDatos()); // Mostrar los datos del candidato
             
             // Mostrar los datos del candidato en una ventana emergente (JOptionPane)
+            if(Controlador.flag){
             JOptionPane.showMessageDialog(null, showInfoCandidato, "Información del Candidato",
-                    JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.INFORMATION_MESSAGE);}
             return candidatoEncontrado;
         } else {
             throw new FormularioException("EL USUARIO NO SE ENCUENTRA REGISTRADO");
@@ -64,8 +69,9 @@ public class Controlador implements ControladorGeneral {
         }
     }
         catch(FormularioException e){
-            System.out.println(e.getMessage());
-            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            if(Controlador.flag){
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);}
+            else{System.out.println(e.getMessage());}
             return candidatoEncontrado;
         }
 
@@ -94,9 +100,10 @@ public class Controlador implements ControladorGeneral {
             Modelo.modelo.setProm(propuestas);
             Modelo.modelo.update(candidato);
         } catch (FormularioException e) {
-            System.out.println(e.getMessage());
-            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-
+            
+            if(Controlador.flag){
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);}
+            else{System.out.println(e.getMessage());}
         }
     }
     @Override
@@ -116,8 +123,8 @@ public class Controlador implements ControladorGeneral {
         } 
     }
         catch(FormularioException e){
-            System.out.println(e.getMessage());
-            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            if(Controlador.flag){JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);}
+            else{System.out.println(e.getMessage());}
             return;
         }
     }
