@@ -9,6 +9,4 @@ public interface VistaGeneral {
     public String getPartido();
     public ArrayList <String> getPromesas();
     public String getInclinacion();
-    
-
 }

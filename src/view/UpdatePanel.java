@@ -300,7 +300,7 @@ public class UpdatePanel extends javax.swing.JPanel implements VistaGeneral{
 
         private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) { // Boton para buscar al candidato que vamos a actualizar      
             // Comprobamos si se encuentra el candidato
-            if(controlador.buscarCandidato(jTFUpdate.getText(),this) != null){
+            if(controlador.buscarCandidato(jTFUpdate.getText()) != null){
                jPNewDatos.setVisible(true);
                jTFUpdate.setEditable(false);
 
@@ -324,7 +324,7 @@ public class UpdatePanel extends javax.swing.JPanel implements VistaGeneral{
         }                                              
     
         private void jButtonAddUpdateActionPerformed(java.awt.event.ActionEvent evt) {    
-            controlador.updateCandidato(controlador.AccederCandidato(jTFUpdate.getText()), this, getNombre(), getCedula(), getCiudad(), getPartido(), getInclinacion(),getPromesas());
+            controlador.updateCandidato(controlador.AccederCandidato(jTFUpdate.getText()), getNombre(), getCedula(), getCiudad(), getPartido(), getInclinacion(),getPromesas());
             jPNewDatos.setVisible(false);
             reiniciarVariables();
         }

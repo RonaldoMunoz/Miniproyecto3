@@ -2,7 +2,7 @@ package view;
 
 import java.util.ArrayList;
 import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
+
 
 import controller.Controlador;
 
@@ -205,7 +205,7 @@ public class AddjPanel extends javax.swing.JPanel implements VistaGeneral{
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {
         
-        controlador.addCandidato(getNombre(),getCedula(),getPartido(),getCiudad(),getPromesas(),getInclinacion(),jPanel1);
+        controlador.addCandidato(getNombre(),getCedula(),getPartido(),getCiudad(),getPromesas(),getInclinacion());
         reiniciarVariables();
     }
 
