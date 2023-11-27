@@ -3,30 +3,24 @@ package controller;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JTextArea;
-
-import model.C_origen;
 import model.Candidato;
 import model.FormularioException;
-import model.Inclinacion;
 import model.Modelo;
-import model.Partido_p;
 
-;
 
-public class Controlador  {
-
-   
-    
-    
+public class Controlador implements ControladorGeneral {
+    public static boolean flag = false;
     public Controlador(){
 
     }
-
-    public void addCandidato(String name, String cedula, String partido, String ciudad, ArrayList <String> propuestas,String inclinacion, JPanel panel){
+    @Override
+    public void addCandidato(String name, String cedula, String partido, String ciudad, ArrayList <String> propuestas,String inclinacion){
         try{
-        if(name.equals("") || cedula.equals("") || propuestas == null || inclinacion == null ){
+        if(Modelo.modelo.buscarId(cedula) ){
+            throw new FormularioException("La cedula que ingresaste ya se encuentra registrada.");
+        }
+        else if(name.equals("") || cedula.equals("") || propuestas == null || inclinacion == null ){
             throw new FormularioException("Debes llenar todos los datos del candidato");
             
         }
@@ -39,11 +33,16 @@ public class Controlador  {
         Modelo.modelo.addCandidato(Modelo.candidatos);
     }
     catch(FormularioException e){
-        JOptionPane.showMessageDialog(panel, e, "Error al ingresar los datos", 0);
+        
+        if(Controlador.flag){
+        JOptionPane.showMessageDialog(null, e, "Error al ingresar los datos", JOptionPane.ERROR_MESSAGE);}
+        else{
+            System.out.println(e.getMessage());
+        }
     }
     }
-
-    public Candidato buscarCandidato(String target, JPanel panel){
+    @Override
+    public Candidato buscarCandidato(String target){
         Modelo.modelo.setTarget(target);
         Candidato candidatoEncontrado = Modelo.modelo.buscar();
         try{
@@ -59,8 +58,9 @@ public class Controlador  {
             showInfoCandidato.append(candidatoEncontrado.listarDatos()); // Mostrar los datos del candidato
             
             // Mostrar los datos del candidato en una ventana emergente (JOptionPane)
-            JOptionPane.showMessageDialog(panel, showInfoCandidato, "Información del Candidato",
-                    JOptionPane.INFORMATION_MESSAGE);
+            if(Controlador.flag){
+            JOptionPane.showMessageDialog(null, showInfoCandidato, "Información del Candidato",
+                    JOptionPane.INFORMATION_MESSAGE);}
             return candidatoEncontrado;
         } else {
             throw new FormularioException("EL USUARIO NO SE ENCUENTRA REGISTRADO");
@@ -69,12 +69,14 @@ public class Controlador  {
         }
     }
         catch(FormularioException e){
-            JOptionPane.showMessageDialog(panel, e, "Error", JOptionPane.ERROR_MESSAGE);
+            if(Controlador.flag){
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);}
+            else{System.out.println(e.getMessage());}
             return candidatoEncontrado;
         }
 
     }
-
+    @Override
     public Candidato AccederCandidato(String target){
         Modelo.modelo.setTarget(target);
         Candidato candidatoEncontrado = Modelo.modelo.buscar();
@@ -82,15 +84,14 @@ public class Controlador  {
 
     }
 
-
-    public void updateCandidato(Candidato candidato, JPanel panel, String nombre, String cedula, String ciudad,
+    @Override
+    public void updateCandidato(Candidato candidato, String nombre, String cedula, String ciudad,
             String partido, String inclinacion, ArrayList<String> propuestas) {
         try {
             if (nombre.equals("") || cedula.equals("") || propuestas == null || inclinacion == null) {
                 throw new FormularioException("Debes llenar todos los datos del candidato");
 
             }
-            
             Modelo.modelo.setNombre(nombre);
             Modelo.modelo.setCedula(cedula);
             Modelo.modelo.setCiudad(ciudad);
@@ -99,14 +100,37 @@ public class Controlador  {
             Modelo.modelo.setProm(propuestas);
             Modelo.modelo.update(candidato);
         } catch (FormularioException e) {
-            JOptionPane.showMessageDialog(panel, e, "Error", JOptionPane.ERROR_MESSAGE);
-
+            
+            if(Controlador.flag){
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);}
+            else{System.out.println(e.getMessage());}
+        }
+    }
+    @Override
+    public void deleteCandidato(String id){
+        
+        Modelo.modelo.setTarget(id);
+        try{
+        if(id.equals("") || id == null){
+            throw new FormularioException("Digite la cedula del candidato."); }
+        
+        else if(Modelo.modelo.delete(Modelo.candidatos)){
+            System.out.println("El candidato se elimino con exito!");
+            JOptionPane.showMessageDialog(null, "El candidato se elimino con exito!", "CRUD", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else{
+            throw new FormularioException("El usuario no se encuentra registrado");
+        } 
+    }
+        catch(FormularioException e){
+            if(Controlador.flag){JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);}
+            else{System.out.println(e.getMessage());}
+            return;
         }
     }
 
-    public void deleteCandidato(String id){
-        Modelo.modelo.setTarget(id);
-        Modelo.modelo.delete(Modelo.candidatos);
+    public StringBuilder mostrarCandidatos(){
+        return Modelo.modelo.mostrarCandidatos();
     }
 
 

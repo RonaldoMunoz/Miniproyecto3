@@ -87,7 +87,7 @@ public class SearchJP extends javax.swing.JPanel {
     }// GEN-LAST:event_jTextFBuscarActionPerformed
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {
-        controlador.buscarCandidato(jTextFBuscar.getText(),this);
+        controlador.buscarCandidato(jTextFBuscar.getText());
 
     }
 

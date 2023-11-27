@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
-
 import javax.swing.DefaultListModel;
 
 public class Modelo {
@@ -99,15 +98,26 @@ public class Modelo {
         return null;
     }
 
-    public void delete(ArrayList<Candidato> candidatos) {
+    public boolean buscarId(String id){
+            for (Candidato c1 : Modelo.candidatos) {
+                if(c1.getCedula().equals(id)){
+                    return true;
+                }
+            }
+            return false;
+    }   
+
+    public boolean delete(ArrayList<Candidato> candidatos) {
         String buscar = this.target;
         for (int i = 0; i < Modelo.candidatos.size(); i++) {
             if (Modelo.candidatos.get(i) != null) {
                 if (Modelo.candidatos.get(i).getCedula().equals(buscar)) {
                     Modelo.candidatos.remove(i);
+                    return true;
                 }
             }
         }
+        return false;
     }
 
     public boolean checkCandidato(){
@@ -134,10 +144,10 @@ public class Modelo {
     }
 
 
-    public StringBuilder mostrarCandidatos(ArrayList<Candidato> candidatos) {
+    public StringBuilder mostrarCandidatos() {
         StringBuilder datos = new StringBuilder();
-        for (int i = 0; i < candidatos.size(); i++) {
-            String text = candidatos.get(i).listarDatos();
+        for (int i = 0; i < Modelo.candidatos.size(); i++) {
+            String text = Modelo.candidatos.get(i).listarDatos();
             datos.append(text + "\n");
 
         }

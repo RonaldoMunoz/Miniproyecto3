@@ -30,6 +30,7 @@ public class Menu {
                 candidato.get(i).setN_votos(votos);
             }
         }
+        dato.close();
     }
     public void mostrarEnums(){
         ArrayList<String> nombresEnum = new ArrayList<>();

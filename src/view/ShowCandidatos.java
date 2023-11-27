@@ -1,11 +1,9 @@
 package view;
 
-import java.util.ArrayList;
-import model.Modelo;
-/**
- *
- * @author usuario
- */
+
+
+import controller.Controlador;
+
 public class ShowCandidatos extends javax.swing.JPanel {
 
     /**
@@ -35,7 +33,7 @@ public class ShowCandidatos extends javax.swing.JPanel {
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
     
-        StringBuilder datos = candidatosShow(Modelo.candidatos);
+        StringBuilder datos = controlador.mostrarCandidatos();
     
         jTextArea1.setText(datos.toString());
         jTextArea1.setEditable(false); // Hacer que el TextArea sea o no editable
@@ -77,20 +75,13 @@ public class ShowCandidatos extends javax.swing.JPanel {
 
     }// </editor-fold>//GEN-END:initComponents
 
-    private StringBuilder candidatosShow(ArrayList <model.Candidato> candidatos){
-        for(int i = 0; i<candidatos.size();i++){
-            String text = candidatos.get(i).listarDatos();
-            datos.append(text+"\n");
-            
-        }
-        return datos;
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private  StringBuilder datos = new StringBuilder();
+
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jShowCandidatos;
     private javax.swing.JTextArea jTextArea1;
+    private Controlador controlador = new Controlador(); 
     // End of variables declaration//GEN-END:variables
 }
