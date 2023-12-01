@@ -203,15 +203,7 @@ public class Controlador implements ControladorGeneral {
     }
 
     @Override
-  ronal
-    public DefaultListModel<String> getTopciudades() {
-
-    public Candidato getCandidato(int index) {
-        try{
-        return Modelo.candidatos.get(index);
-        }catch(IndexOutOfBoundsException e){
-            return null;
-        } main
+    public DefaultListModel<String> getTopciudades(){
+        return Modelo.modelo.topCiudades();
     }
-
 }
