@@ -1,7 +1,6 @@
 package controller;
 
 import java.util.ArrayList;
-
 import javax.swing.DefaultListModel;
 
 import model.Candidato;
@@ -17,5 +16,6 @@ public interface ControladorGeneral {
     public Candidato getGanador();
     public String getPartidoMasCandidatos();
     public DefaultListModel<String> getTopciudades();
+
 
 }
