@@ -34,7 +34,7 @@ public class Ganador extends JPanel {
         setPreferredSize(new java.awt.Dimension(643, 337));
 
         jLabelNameWinner.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
-        jLabelNameWinner.setText("El ganador de las elecciones es: " + controlador.getGanador().getNombre() + "CC:"+controlador.getGanador().getCedula());
+        jLabelNameWinner.setText("El ganador de las elecciones es: " + controlador.getGanador().getNombre() + " CC: "+controlador.getGanador().getCedula());
 
         jLabelPartidos.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         jLabelPartidos.setText("Partido con más candidatos: " + controlador.getPartidoMasCandidatos());

@@ -6,12 +6,14 @@ import java.util.Scanner;
 import model.C_origen;
 import model.FormularioException;
 import controller.Controlador;
+import model.Menu1op;
 
 public class VistaConsola implements VistaGeneral {
-    public String nombre, cedula, ciudad, partido, inclinacion;
+    public String nombre, cedula, ciudad, partido, inclinacion, voto;
     public ArrayList<String> promesas = new ArrayList<String>();
     public Controlador controlador = new Controlador();
     public boolean flag = false;
+    public int index = 0;
 
     public VistaConsola() {
     }
@@ -21,7 +23,7 @@ public class VistaConsola implements VistaGeneral {
         System.out.println("[A]<- Insertar candidato \n");
         System.out.println("[B}<- Actualizar candidato \n");
         System.out.println("[C]<- Eliminar candidato \n");
-        System.out.println("[D]<- Buscar candidato por nombre \n");
+        System.out.println("[D]<- Buscar candidato \n");
         System.out.println("[E]<- Listar todos los candidatoS \n");
         System.out.println("[F]<- Si desea continuar con el ingreso de votos \n");
     }
@@ -91,7 +93,7 @@ public class VistaConsola implements VistaGeneral {
         System.out.println(controlador.mostrarCandidatos().toString());
     }
 
-    public void enterToContinue(){
+    public void enterToContinue() {
         Scanner dato = new Scanner(System.in);
         System.out.println("Enter Para continuar");
         dato.nextLine();
@@ -132,6 +134,7 @@ public class VistaConsola implements VistaGeneral {
             }
             case F: {
                 this.flag = true;
+                votacion();
                 enterToContinue();
                 break;
             }
@@ -141,15 +144,15 @@ public class VistaConsola implements VistaGeneral {
         }
     }
 
-    public String buscar() {
+    public void buscar() {
         Scanner dato = new Scanner(System.in);
         String target;
         System.out.println("Ingresa la cedula del candidato");
         target = dato.nextLine();
-        if(controlador.buscarCandidato(target) == null){
-            return "";
+        if (controlador.buscarCandidato(target) == null) {
+            System.out.println("");
         }
-        return controlador.buscarCandidato(target).listarDatos();
+        System.out.println(controlador.buscarCandidato(target).listarDatos());
     }
 
     public void actualizar() {
@@ -168,6 +171,35 @@ public class VistaConsola implements VistaGeneral {
             }
         } catch (FormularioException e) {
             System.out.println(e.getMessage());
+        }
+    }
+
+    public void menuVotaciones(Menu1op opciones) {
+        
+        switch (opciones) {
+            case A: {
+                System.out.println(controlador.getGanador().listarDatos());
+                enterToContinue();
+                break;
+            }
+            case B: {
+                cleanScreen();
+                System.out.println(controlador.getPartidoMasCandidatos());
+                enterToContinue();
+                break;
+            }
+            case C: {
+                cleanScreen();
+                System.out.println(controlador.getTopciudades().toString());
+                
+                enterToContinue();
+                break;
+            }
+            case D:{
+                cleanScreen();
+                System.out.println("Saliendo del programa!!");
+                this.flag=true;
+            }
         }
     }
 
@@ -232,6 +264,19 @@ public class VistaConsola implements VistaGeneral {
         }
     }
 
+    public void votacion() {
+        Scanner dato = new Scanner(System.in);
+        while (true) {
+            System.out.println("Digite los votos de:" + controlador.getCandidato(index).getNombre());
+            voto = dato.nextLine();
+            controlador.votacion(index, voto);
+            if (controlador.getCandidato(index + 1) != null) {
+                index++;
+            } else
+                return;
+        }
+    }
+
     public void iniciarVistaConsola() {
         cleanScreen();
         Scanner dato = new Scanner(System.in);
@@ -247,7 +292,15 @@ public class VistaConsola implements VistaGeneral {
             } catch (IllegalArgumentException e) {
                 System.out.println("Seleccione una opcion valida");
             }
-
+        }
+        this.flag = false;
+        while(flag != true){
+        System.out.println("[A]<- Ver Ganador \n");
+        System.out.println("[B}<- Partido con más candidatos \n");
+        System.out.println("[C]<- Top 3 ciudades con menos candidatos \n");
+        System.out.println("[D]<- Salir del programa \n");
+        opcionUser = dato.nextLine();
+        menuVotaciones(Menu1op.valueOf(opcionUser)); 
         }
     }
 }

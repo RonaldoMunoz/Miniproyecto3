@@ -135,13 +135,16 @@ public class Modelo {
     }
 
     public void update(Candidato candidato) {
-
+        try{
+        
         candidato.setNombre(this.nombre);
         candidato.setCedula(this.cedula);
         candidato.setPartido_politico(Partido_p.valueOf(this.partido.toUpperCase()));
         candidato.setC_origen(C_origen.valueOf(this.ciudad.toUpperCase()));
         candidato.setPromesas(this.prom);
-        
+        }catch(IllegalArgumentException e){
+            return;
+        }
     }
 
 
@@ -179,15 +182,30 @@ public class Modelo {
         return partidoMasCandidatos;
     }
 
-    public Candidato encontrarGanador(ArrayList<Candidato> candidatos) {
-        Candidato ganador = candidatos.get(0);
-        for (int i = 1; i < candidatos.size(); i++) {
-            if (candidatos.get(i).getN_votos() > ganador.getN_votos()) {
-                ganador = candidatos.get(i);
+    public Candidato obtenerGanador() {
+        // Verificar si la lista de candidatos no está vacía
+        if (candidatos.isEmpty()) {
+            // Manejar el caso de una lista vacía según tus necesidades
+            return null;
+        }
+
+        // Inicializar variables para realizar un seguimiento del candidato con más votos
+        Candidato candidatoConMayorVotos = null;
+        int votosMaximos = Integer.MIN_VALUE;
+
+        // Iterar sobre la lista de candidatos
+        for (Candidato candidato : candidatos) {
+            int votos = candidato.getN_votos();
+
+            // Verificar si los votos actuales son mayores que los votos máximos registrados
+            if (votos > votosMaximos) {
+                votosMaximos = votos;
+                candidatoConMayorVotos = candidato;
             }
         }
-        // Mostrar el candidato ganador
-        return ganador;
+
+        // Devolver el candidato con el mayor número de votos
+        return candidatoConMayorVotos;
     }
 
     public DefaultListModel<String> topCiudades(){
@@ -216,31 +234,6 @@ public class Modelo {
         return ciudadesListModel;
     }
 
-    public Candidato encontrarGanador(){
-         Map <Candidato , Integer > listaCandidatos = new HashMap<>();
-        for (Candidato candidato : candidatos) {
-
-            listaCandidatos.put(candidato, candidato.getN_votos());
-            
-        }
-
-        Candidato candidatoGanador = null;
-        int valorMaximo = Integer.MIN_VALUE;
-
-        // Iterar sobre las entradas del map
-        for (Map.Entry<Candidato, Integer> entry : listaCandidatos.entrySet()) {
-            Candidato candidato = entry.getKey();
-            int valor = entry.getValue();
-
-            // Verificar si el valor actual es mayor que el valor máximo registrado
-            if (valor > valorMaximo) {
-                valorMaximo = valor;
-                candidatoGanador = candidato;
-            }
-        }
-
-        return candidatoGanador;
-    }
 
     public String encontrarPartidoConMasCandidatos() {
         Map <String , Integer > listaPartidos = new HashMap<>();
