@@ -107,6 +107,7 @@ public class Controlador implements ControladorGeneral {
                 throw new FormularioException("Debes llenar todos los datos del candidato");
 
             }
+
             if(!Modelo.modelo.checkDatos(ciudad,partido,inclinacion)){
                 throw new FormularioException("Se deben digitar valores validos en la ciudad,partido y inclinacion del candidato");
             }
@@ -124,7 +125,7 @@ public class Controlador implements ControladorGeneral {
                 System.out.println(e.getMessage());
                 return;
             }
-        }  
+
     }
 
     @Override
@@ -203,7 +204,9 @@ public class Controlador implements ControladorGeneral {
     }
 
     @Override
+
     public DefaultListModel<String> getTopciudades(){
         return Modelo.modelo.topCiudades();
     }
 }
+

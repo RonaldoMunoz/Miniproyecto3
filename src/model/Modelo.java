@@ -204,7 +204,6 @@ public class Modelo {
         // Inicializar variables para realizar un seguimiento del candidato con más votos
         Candidato candidatoConMayorVotos = null;
         int votosMaximos = Integer.MIN_VALUE;
-
         // Iterar sobre la lista de candidatos
         for (Candidato candidato : candidatos) {
             int votos = candidato.getN_votos();
