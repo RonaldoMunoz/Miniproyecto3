@@ -135,7 +135,7 @@ public class JpaneVotacion extends javax.swing.JPanel {
                 layout.setVerticalGroup(
                                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 349,
-                                                          Short.MAX_VALUE));
+                                                                Short.MAX_VALUE));
         }
 
         private String getVotos() {
@@ -147,9 +147,10 @@ public class JpaneVotacion extends javax.swing.JPanel {
         }
 
         private void jButtonVotosAddActionPerformed(java.awt.event.ActionEvent evt) {
-                if (controlador.getCandidato(index + 1) != null) {
-                        controlador.votacion(index, getVotos());
-                        index++;
+                controlador.votacion(index, getVotos());
+                jTextFVotos.setText(null);
+                index += 1;
+                if (controlador.getCandidato(index) != null) {
                         setNombre(controlador.getCandidato(index).getNombre());
                         this.jTextFVotos.setText(null);
                 }
@@ -175,6 +176,5 @@ public class JpaneVotacion extends javax.swing.JPanel {
         private javax.swing.JTextField jTextFVotos;
         static int index = 0;
         public Controlador controlador = new Controlador();
-
+        // End of variables declaration//GEN-END:variables
 }
-

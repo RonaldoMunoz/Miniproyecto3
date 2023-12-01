@@ -5,10 +5,14 @@ import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
+
+import model.C_origen;
 import model.Candidato;
 import model.CandidatoException;
 import model.FormularioException;
+import model.Inclinacion;
 import model.Modelo;
+import model.Partido_p;
 
 public class Controlador implements ControladorGeneral {
     public static boolean flag = false;
@@ -23,7 +27,7 @@ public class Controlador implements ControladorGeneral {
         try {
             if (Modelo.modelo.buscarId(cedula)) {
                 throw new FormularioException("La cedula que ingresaste ya se encuentra registrada.");
-            } else if (name.equals("") || cedula.equals("") || propuestas == null || inclinacion == null) {
+            } else if (name.equals("") || cedula.equals("") || propuestas == null || inclinacion.equals("")|| partido.equals("") || ciudad.equals("")) {
                 throw new FormularioException("Debes llenar todos los datos del candidato");
 
             }
@@ -42,7 +46,7 @@ public class Controlador implements ControladorGeneral {
                 System.out.println(e.getMessage());
             }
         } catch (IllegalArgumentException e) {
-            System.out.println("Error al ingresar los datos del candidato");
+            System.out.println("No haz ingresado La ciudad, partido o inclinacion del candidato correctamente");
             return;
         }
     }
@@ -99,10 +103,13 @@ public class Controlador implements ControladorGeneral {
     public void updateCandidato(Candidato candidato, String nombre, String cedula, String ciudad,
             String partido, String inclinacion, ArrayList<String> propuestas) {
         try {
-            if (nombre.equals("") || cedula.equals("") || propuestas == null || inclinacion == null) {
+            if (nombre.equals("") || cedula.equals("") || propuestas == null || inclinacion.equals("")|| partido.equals("") || ciudad.equals("")) {
                 throw new FormularioException("Debes llenar todos los datos del candidato");
 
             }
+            C_origen c = C_origen.valueOf(ciudad);
+            Partido_p p = Partido_p.valueOf(partido);
+            Inclinacion i = Inclinacion.valueOf(inclinacion);
             Modelo.modelo.setNombre(nombre);
             Modelo.modelo.setCedula(cedula);
             Modelo.modelo.setCiudad(ciudad);
@@ -117,6 +124,15 @@ public class Controlador implements ControladorGeneral {
                 System.out.println(e.getMessage());
                 return;
             }
+        }   catch (IllegalArgumentException e) {
+            Modelo.modelo.setNombre("");
+            Modelo.modelo.setCedula("");
+            Modelo.modelo.setCiudad("");
+            Modelo.modelo.setPartido("");
+            Modelo.modelo.setInclinacion("");
+            Modelo.modelo.setProm(null);
+            System.out.println("No haz ingresado La ciudad, partido o inclinacion del candidato correctamente");
+            return;
         }
     }
 
@@ -187,7 +203,7 @@ public class Controlador implements ControladorGeneral {
 
     @Override
     public Candidato getGanador() {
-        return Modelo.modelo.encontrarGanador();
+        return Modelo.modelo.obtenerGanador();
     }
 
     @Override
@@ -196,15 +212,8 @@ public class Controlador implements ControladorGeneral {
     }
 
     @Override
-  ronal
     public DefaultListModel<String> getTopciudades() {
-
-    public Candidato getCandidato(int index) {
-        try{
-        return Modelo.candidatos.get(index);
-        }catch(IndexOutOfBoundsException e){
-            return null;
-        } main
+        return Modelo.modelo.topCiudades();
     }
 
 }
