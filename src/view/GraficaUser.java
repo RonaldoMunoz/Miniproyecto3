@@ -222,11 +222,18 @@ public class GraficaUser extends javax.swing.JFrame {
         content.repaint();
     }//GEN-LAST:event_jMitemShowActionPerformed
 
-    private void jMitemContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMitemContinuarActionPerformed
-        userInterface.dispose();
-        Resultados resultado = new Resultados();
+    private void jMitemContinuarActionPerformed(java.awt.event.ActionEvent evt) {
+        this.dispose();
         resultado.setLocationRelativeTo(null);
         resultado.setVisible(true);
+        Resultados.jPanelContent.removeAll();
+        JpaneVotacion votacion = new JpaneVotacion();
+        votacion.setSize(643, 337);
+        Resultados.jPanelContent.add(votacion);
+        votacion.setLocation(0,0);
+        Resultados.jPanelContent.revalidate();
+        Resultados.jPanelContent.repaint();
+
         
     }
 
@@ -244,6 +251,7 @@ public class GraficaUser extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMitemShow;
     static boolean exit = false;
     static GraficaUser userInterface = new GraficaUser();
+    public static Resultados resultado = new Resultados();
     //static ArrayList<Candidato> candidatos;
 
     // End of variables declaration//GEN-END:variables

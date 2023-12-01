@@ -1,6 +1,8 @@
 package view;
 import javax.swing.*;
 
+import controller.Controlador;
+
 
 public class Ganador extends JPanel {
 
@@ -10,6 +12,7 @@ public class Ganador extends JPanel {
     private JList<String> jList1;
     private JScrollPane jScrollPane1;
     private JLabel jLabel3;
+    private Controlador controlador = new Controlador();
     private JButton jButtonVerPropuestas;
     private JLabel jLabelPartidoConMasCandidatos;
 
@@ -31,10 +34,10 @@ public class Ganador extends JPanel {
         setPreferredSize(new java.awt.Dimension(643, 337));
 
         jLabelNameWinner.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
-        jLabelNameWinner.setText("El ganador de las elecciones es: ");
+        jLabelNameWinner.setText("El ganador de las elecciones es: " + controlador.getGanador().getNombre() + "CC:"+controlador.getGanador().getCedula());
 
         jLabelPartidos.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
-        jLabelPartidos.setText("Partido con más candidatos: ");
+        jLabelPartidos.setText("Partido con más candidatos: " + controlador.getPartidoMasCandidatos());
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         jLabel2.setText("Top 3 ciudades con menos candidatos inscritos:");
@@ -42,11 +45,7 @@ public class Ganador extends JPanel {
         jList1.setBackground(new java.awt.Color(242, 242, 242));
         jList1.setBorder(null);
         jList1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", " " };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+        jList1.setModel(controlador.getTopciudades());
         jScrollPane1.setViewportView(jList1);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("imageSources/2560x1600-Fondo-de-pantalla-HD-Full-HD-papel-tapiz-de-color-solido-papel-tapiz-de-color-solido.jpg"))); // NOI18N
@@ -85,5 +84,5 @@ public class Ganador extends JPanel {
             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }
-
+    
 }

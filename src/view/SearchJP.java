@@ -30,13 +30,7 @@ public class SearchJP extends javax.swing.JPanel {
         jLabel2.setText("Buscar Candidato.");
 
         jLabel3.setText("Digite la cedula del candidato:");
-
-        jTextFBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFBuscarActionPerformed(evt);
-            }
-        });
-
+        
         jButtonBuscar.setBackground(java.awt.Color.lightGray);
         jButtonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("imageSources/buscar.png"))); // NOI18N
         jButtonBuscar.setText("Buscar");
@@ -80,11 +74,7 @@ public class SearchJP extends javax.swing.JPanel {
                                 .addComponent(jButtonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 34,
                                         javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
-    }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextFBuscarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jTextFBuscarActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_jTextFBuscarActionPerformed
+    }
 
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {
         controlador.buscarCandidato(jTextFBuscar.getText());

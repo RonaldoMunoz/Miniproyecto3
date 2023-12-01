@@ -2,8 +2,6 @@ package view;
 
 import java.util.ArrayList;
 import javax.swing.JComboBox;
-
-
 import controller.Controlador;
 
 public class AddjPanel extends javax.swing.JPanel implements VistaGeneral{
