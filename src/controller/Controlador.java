@@ -107,9 +107,10 @@ public class Controlador implements ControladorGeneral {
                 throw new FormularioException("Debes llenar todos los datos del candidato");
 
             }
-            C_origen c = C_origen.valueOf(ciudad);
-            Partido_p p = Partido_p.valueOf(partido);
-            Inclinacion i = Inclinacion.valueOf(inclinacion);
+
+            if(!Modelo.modelo.checkDatos(ciudad,partido,inclinacion)){
+                throw new FormularioException("Se deben digitar valores validos en la ciudad,partido y inclinacion del candidato");
+            }
             Modelo.modelo.setNombre(nombre);
             Modelo.modelo.setCedula(cedula);
             Modelo.modelo.setCiudad(ciudad);
@@ -124,16 +125,7 @@ public class Controlador implements ControladorGeneral {
                 System.out.println(e.getMessage());
                 return;
             }
-        }   catch (IllegalArgumentException e) {
-            Modelo.modelo.setNombre("");
-            Modelo.modelo.setCedula("");
-            Modelo.modelo.setCiudad("");
-            Modelo.modelo.setPartido("");
-            Modelo.modelo.setInclinacion("");
-            Modelo.modelo.setProm(null);
-            System.out.println("No haz ingresado La ciudad, partido o inclinacion del candidato correctamente");
-            return;
-        }
+
     }
 
     @Override
@@ -212,8 +204,9 @@ public class Controlador implements ControladorGeneral {
     }
 
     @Override
-    public DefaultListModel<String> getTopciudades() {
+
+    public DefaultListModel<String> getTopciudades(){
         return Modelo.modelo.topCiudades();
     }
-
 }
+

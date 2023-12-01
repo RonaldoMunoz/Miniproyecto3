@@ -181,7 +181,19 @@ public class Modelo {
         }
         return partidoMasCandidatos;
     }
-
+    public boolean checkDatos (String ciudad, String partido, String inclinacion){
+        try{
+            ciudad.replace(" ", "_");
+            partido.replace(" ", "_");
+            inclinacion.replace(" ", "_");
+        C_origen c = C_origen.valueOf(ciudad.toUpperCase());
+        Partido_p p = Partido_p.valueOf(partido.toUpperCase());
+        Inclinacion i = Inclinacion.valueOf(inclinacion.toUpperCase());
+        return true;
+        }catch(IllegalArgumentException e){
+            return false;
+        }
+    }
     public Candidato obtenerGanador() {
         // Verificar si la lista de candidatos no está vacía
         if (candidatos.isEmpty()) {
@@ -192,7 +204,6 @@ public class Modelo {
         // Inicializar variables para realizar un seguimiento del candidato con más votos
         Candidato candidatoConMayorVotos = null;
         int votosMaximos = Integer.MIN_VALUE;
-
         // Iterar sobre la lista de candidatos
         for (Candidato candidato : candidatos) {
             int votos = candidato.getN_votos();

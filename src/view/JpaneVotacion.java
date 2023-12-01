@@ -1,7 +1,6 @@
 package view;
 
 import controller.Controlador;
-import model.Candidato;
 
 public class JpaneVotacion extends javax.swing.JPanel {
 
