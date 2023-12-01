@@ -35,22 +35,22 @@ public class GraficaUser extends javax.swing.JFrame {
         
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(115, 125, 188));
-        setMinimumSize(new java.awt.Dimension(635, 400));
+        setMinimumSize(new java.awt.Dimension(640, 410));
         setResizable(false);
 
         content.setBackground(new java.awt.Color(255, 255, 255));
-        content.setMaximumSize(new java.awt.Dimension(643, 377));
-        content.setMinimumSize(new java.awt.Dimension(643, 377));
+        content.setMaximumSize(new java.awt.Dimension(650, 384));
+        content.setMinimumSize(new java.awt.Dimension(650, 384));
 
         javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
         content.setLayout(contentLayout);
         contentLayout.setHorizontalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 643, Short.MAX_VALUE)
+            .addGap(0, 650, Short.MAX_VALUE)
         );
         contentLayout.setVerticalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 377, Short.MAX_VALUE)
+            .addGap(0, 384, Short.MAX_VALUE)
         );
 
         jMenuBar2.setBackground(new java.awt.Color(255, 255, 255));
@@ -214,7 +214,7 @@ public class GraficaUser extends javax.swing.JFrame {
 
     private void jMitemShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMitemShowActionPerformed
         ShowCandidatos show = new ShowCandidatos();
-        show.setSize(643,377);
+        show.setSize(650, 384);
         show.setLocation(0,0);
         content.removeAll();
         content.add(show);

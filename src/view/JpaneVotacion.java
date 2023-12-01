@@ -147,9 +147,10 @@ public class JpaneVotacion extends javax.swing.JPanel {
         }
 
         private void jButtonVotosAddActionPerformed(java.awt.event.ActionEvent evt) {
-                if (controlador.getCandidato(index + 1) != null) {
-                        controlador.votacion(index, getVotos());
-                        index++;
+                controlador.votacion(index, getVotos());
+                jTextFVotos.setText(null);
+                index += 1;
+                if (controlador.getCandidato(index) != null) {
                         setNombre(controlador.getCandidato(index).getNombre());
                         this.jTextFVotos.setText(null);
                 }
