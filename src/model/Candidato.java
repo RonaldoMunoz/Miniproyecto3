@@ -1,4 +1,5 @@
 package model;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +9,6 @@ public class Candidato extends Ciudadano {
     private ArrayList<String> promesas;
     private Inclinacion inclinacion;
     private int n_votos;
-    
 
     public Candidato(String nombre, String cedula, C_origen c_origen, Partido_p partido_politico,
             ArrayList<String> promesas, Inclinacion inclinacion, int n_votos) {
@@ -69,8 +69,9 @@ public class Candidato extends Ciudadano {
                 getPromesas(),
                 getInclinacion());
     }
-    public void listarDatosVotos(){
-                System.out.println(String.format(
+
+    public void listarDatosVotos() {
+        System.out.println(String.format(
                 "Nombre: %s\nIdentificacion: %s\nCiudad de origen: %s\nPartido Politico: %s\nPromesas: %s\nInclinación Politica: %s\nTotal de Votos: %s",
                 getNombre(),
                 getCedula(),
@@ -80,8 +81,18 @@ public class Candidato extends Ciudadano {
                 getInclinacion(),
                 getN_votos()));
 
-                
+    }
 
+    public void listarDatosCandidato() {
+        System.out.println(String.format(
+                "Nombre: %s\nIdentificacion: %s\nCiudad de origen: %s\nPartido Politico: %s\nPromesas: %s\nInclinación Politica: %s\nTotal de Votos: %s",
+                getNombre(),
+                getCedula(),
+                getC_origen().displayNameEnum(),
+                getPartido_politico().displayNameEnum(),
+                getPromesas(),
+                getInclinacion(),
+                getN_votos()));
     }
 
 }

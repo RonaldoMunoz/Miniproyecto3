@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 import javax.swing.DefaultListModel;
 
@@ -189,7 +190,7 @@ public class Modelo {
         return ganador;
     }
 
-    public DefaultListModel<String> topCiudades(ArrayList <Candidato> candidatos){
+    public DefaultListModel<String> topCiudades(){
         Map<String, Integer> conteoCiudades = new HashMap<>();
         Map<Partido_p, Integer> conteoPartidos = new HashMap<>();  // Contador de candidatos por partido
         ArrayList<String> ciudades = new ArrayList<>();
@@ -215,6 +216,57 @@ public class Modelo {
         return ciudadesListModel;
     }
 
+    public Candidato encontrarGanador(){
+         Map <Candidato , Integer > listaCandidatos = new HashMap<>();
+        for (Candidato candidato : candidatos) {
+
+            listaCandidatos.put(candidato, candidato.getN_votos());
+            
+        }
+
+        Candidato candidatoGanador = null;
+        int valorMaximo = Integer.MIN_VALUE;
+
+        // Iterar sobre las entradas del map
+        for (Map.Entry<Candidato, Integer> entry : listaCandidatos.entrySet()) {
+            Candidato candidato = entry.getKey();
+            int valor = entry.getValue();
+
+            // Verificar si el valor actual es mayor que el valor máximo registrado
+            if (valor > valorMaximo) {
+                valorMaximo = valor;
+                candidatoGanador = candidato;
+            }
+        }
+
+        return candidatoGanador;
+    }
+
+    public String encontrarPartidoConMasCandidatos() {
+        Map <String , Integer > listaPartidos = new HashMap<>();
+        for (Candidato candidato : candidatos) {
+
+            listaPartidos.merge(candidato.getPartido_politico().displayNameEnum(), 1, Integer::sum);
+            
+        }
+
+        String partidoConMayorValor = null;
+        int valorMaximo = Integer.MIN_VALUE;
+
+        // Iterar sobre las entradas del map
+        for (Map.Entry<String, Integer> entry : listaPartidos.entrySet()) {
+            String partido = entry.getKey();
+            int valor = entry.getValue();
+
+            // Verificar si el valor actual es mayor que el valor máximo registrado
+            if (valor > valorMaximo) {
+                valorMaximo = valor;
+                partidoConMayorValor = partido;
+            }
+        }
+
+        return partidoConMayorValor;
+    }
     
     
     public void reiniciarVariables(){

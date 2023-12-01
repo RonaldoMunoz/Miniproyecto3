@@ -2,19 +2,9 @@ package view;
 
 public class Resultados extends javax.swing.JFrame {
 
-    /**
-     * Creates new form VotacionUser
-     */
+
     public Resultados() {
         initComponents();
-        jPanelContent.removeAll();
-        JpaneVotacion votacion = new JpaneVotacion();
-        votacion.setSize(643, 337);
-        jPanelContent.add(votacion);
-        votacion.setLocation(0,0);
-        jPanelContent.revalidate();
-        jPanelContent.repaint();
-
     }
 
 
